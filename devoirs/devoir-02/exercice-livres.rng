@@ -24,12 +24,12 @@
                             <element name="titre">
                             <element name="auteur">
                                 <choice>
-                                    <element name="nom"><empty/></element>
+                                    <attribute name="nom"/>
                                     <group>
-                                        <element name="nom"><empty/></element>
-                                        <element name="prenom"><empty/></element>
+                                        <attribute name="prenom"/>
+                                        <attribute name="nom"/>
                                     </group>
-                                    </choice>
+                                   </choice>
                             </element>
                             </element>
                         </element>
