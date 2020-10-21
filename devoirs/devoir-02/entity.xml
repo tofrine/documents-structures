@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Root SYSTEM "entity.dtd">
+<Root>
+    <Element3>
+        <!--ici on peut avoir ces trois éléments au choix  (un, deux d'entre eux ou les trois)-->
+        <Element2 id ='IM'></Element2>
+        <Element1 id = 'j57' ></Element1>
+        <Element4 id ='id942' ></Element4>
+    </Element3>   
+    <Element4 id ='gid50'></Element4>
+    <Element5 id ='fr'></Element5>
+</Root>
+
+
+
+
