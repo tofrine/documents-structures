@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <element name="mondial">
+            <oneOrMore>
+                <element name="continent">
+                    <attribute name="id" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+                        <data type="ID"/>
+                    </attribute>
+                    <attribute name="name" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+                        <data type="string"/>
+                    </attribute>
+                    <empty/>
+                </element>
+            </oneOrMore>
+            <oneOrMore>
+                <element name="country">
+                    <attribute name="id" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+                        <data type="ID"/>
+                    </attribute>
+                    <attribute name="name" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+                        <data type="string"/>
+                    </attribute>
+                    <attribute name="gdp_total" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+                        <data type="positiveInteger"/>
+                    </attribute>
+                    <attribute name="gdp_agri"/>
+                    <element name="name">
+                        <text/>
+                    </element>
+                    <oneOrMore>
+                        <element name="city">
+                            <attribute name="longitude"/>
+                            <attribute name="latitude"/>
+                            <element name="name">
+                                <text/>
+                            </element>
+                            <element name="population" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+                                ns="inalco:documents-structures:ns">
+                                <data type="long"/>
+                            </element>
+                            <optional>
+                                <element name="located_at">
+                                    <empty/>
+                                </element>
+                            </optional>
+                        </element>
+                    </oneOrMore>
+                </element>
+            </oneOrMore>
+        </element>
+    </start>
+
+
+ 
+    <define name="att.others.gdp.total">
+        
+    </define>
+
+   
+
+</grammar>
