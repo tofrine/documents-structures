@@ -52,13 +52,6 @@
             </oneOrMore>
         </element>
     </start>
-
-
- 
-    <define name="att.others.gdp.total">
-        
-    </define>
-
-   
+  
 
 </grammar>
