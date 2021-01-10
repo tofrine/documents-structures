@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Projet Documents structurés</title>
+                <author>Fabienne Auffret</author>
+            </titleStmt>
+            <editionStmt>
+                <edition>
+                    <date when="2021">10/01/20211</date>
+                </edition>
+            </editionStmt>
+            <publicationStmt>
+                <authority/>
+                <availability>
+                    <licence target="http://www.serviet.ski/">lien vers la licence</licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Texte du Projet</p>
+                <p>https://github.com/ruthrapr/documents-structures/blob/master/projet-consignes/devoir-projet.pdf</p>
+            </sourceDesc>
+        </fileDesc>
+        <revisionDesc>
+            <listChange>
+                <change>
+                    <name/>
+                    <date>2021-01-10</date>
+                </change>
+            </listChange>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <head>Projet données structurées</head>
+            <div n="1">
+                <head>PRÉAMBULE</head>
+                <p/>
+                <div n="2">
+                    <head>Objectifs du projet</head>
+                    <p>Il s'agit de constuire une chaîne de traitement des fichiers odt pour les mettre au format tei puis les rendre accessibles en ligne grâce à exist-db (affichage et recherche)</p>
+               
+                </div>
+            </div>
+            <div n="1">
+                <head>PREMIÈRE PARTIE</head>
+                <p>Transformer les fichiers content.xml et meta.xml des fichiers odt pour obtenir un  fichier xml conforme aux standard de la tei</p>
+                <div n="2">
+                    <head>Étapes et difficultés rencontrées</head>
+                    <p>Pour commencer, et compléter les informations données dans les consignes concernant les correspondances entre balises odt et tei, j’ai lu sur la structure des documents odt : https://tei-c.org/Vault/P4/Lite/teiu5_fr.html#toc_SEC21.2 et  ici http://tei.oucs.ox.ac.uk/Talks/2012-07-dhoxss/AdvancedTEI/talk-friday1.xml#body.1_div.8. Ainsi que sur cette page : http://www.bvh.univ-tours.fr/XML-TEI/ManuelWeb/Manuel_TEI_BVH.html#index.xml-body.1_div.4</p>
+                    <p>J’avais commencé par faire deux fichiers séparés pour meta.xml et content.xml.J’ai ensuiter appelé le fichier meta directement dans le fichier xsl traitant "content.xml"avec un fonction document(). La partie meta est assez simple à traiter, mais content.xml est beaucoup plus touffu et les styles et les balises imbriquées m'ont posé problème.  J'avais des balises div qui se fermaient au mauvais endroit, j'ai découvert qu'on ne pouvait pas ouvrir un élément (div en l'occurrence) dans une condition et le refermer dans une autre. Le contenu des chapitres ne s'affichait pas uniquement dans celui auquel il appartenait. J’ai fouillé les ressources déjà existantes, comme indiqué dans la consigne. J'ai lu ceci : https://tei-c.org/Vault/P5/3.6.0/doc/tei-xsl/profiles/default/odt/from.htm.</p>
+                    <p>J’ai donc finalement utilisé une feuille xsl déjà existante (j'ai laissé la licence) que j’ai modifiée en ajoutant ma trasformation pour notre format de données venant de meta.xml. Oxygen est très pratique pour faire avancer les instructions pas-à-pas – l’ordre des instructions n’est pas toujours évident à comprendre- et à partir du fichier de sortie, retrouver ce qui a généré la ligne qui nous intéresse. J'aurais pu la simplifier (j'avais commencé, car notre fichier odt n'a pas tous les cas envisagés dans cette feuille très générale) : j'ai choisi de ne pas le faire.</p>
+                    <p>Au début j'ait mis les chemins des fichiers meta.xml « en dur » au lieu de document(concat($dir,'/meta.xml'). Ensuite j’ai décidé de copier la feuille dans chaque répertoire (ce qui n’est pas idéal, il faudrait avoir le temps d’écrire un script pour le lancer avec un paramètre).</p>
+                    <p>J’ai adapté la partie du teiHSeader aux particularités de notre document (balise user-defined et les attributs n des div du texte notamment) : j'ai utilisé mon ficher meta.xsl du départ.</p> 
+                    <p>J’ai ensuite vérifié la validation (la partie licence et availability m’a posé question sur les choix à faire (par exemple : j'ai chois de mettre la date de première publication dans l'attribut when).</p>
+                    <p>J'ai aussi essayé de créer un projet avec un  scénario utilisant ma feuille de style pour l'appliquer d'un coup à tous les documents, mais ça n'a pas fonctionné (information trouvée sur la page : https://www.oxygenxml.com/forum/topic9914.html). Je pense qu'il faudrait commencer par adapter ma variable $META qui permet d'aller chercher dans le meta.xml.</p>
+                  
+                </div>
+            </div>
+
+            <div n="1">
+                <head>DEUXIÈME PARTIE</head>
+                <p>Créer un site pour présenter nos documents</p>
+                <div n="2">
+                    <head>Étapes et difficultés rencontrées</head>
+                    
+                    <p>Exist-db a cessé de fonctionner entre deux séances de travail. J'ai du le réinstaller dans un autre répertoire "Data Directory" dans le menu "System configuration".J'ai ensuite re-uploadé les fichiers xml transformés dans un répertoire "data". Pour cette partie j'ai trouvé que la documentation n'était pas assez illustrée et parfois obsolète (piste avec une variable $existhome pas exemple), mais internet est riche en partage d'informations et on peut trouver des exemples.Sans eux, cette deuxième partie n'aurait pas été bien loin.</p>
+                    <p>J'ai perdu du temps pour indexer mes fichiers (j'avais tout d'abord uploadé mon collection.xconf, une erreur, il faut le créer via exide, sinon plus jamais d'indexation. J'ai pu créer une recherche simple sur tout le texte. La fonction greeting du cours avec le prénom en entrée m'ont aidé pour cette première ébauche de recherche.</p>
+                    <p>Pour les recherches sur les méta données, il faut les indexer dans collection.xconf (jai ajouté : text qname="tei:title", "author" et "date" avec l'attribut when où j'ai stocké la date de première publication. J'ai mis du temps à comprendre qu'il suffisait d'indexer avec qname="@when" sans "tei:"). J'ai ouvert monex et vérifié les index, les auteurs, par exemple, sont stockés "splittés" et en minuscule (bien qu'on  nulle part donné au paramètre caseSensitive la valeur "no"; ce qui n'est d'ailleurs pas recommandé : voir ici : https://exist-db.org/exist/apps/doc/configuration), la recherche est insensible à la casse. J'ai ensuite voulucréer des applications dédiées dans app.xql, en suivant les informations qu'on peut trouver ici : https://exist-db.org/exist/apps/doc/kwic et ailleurs.</p>
+                     <p>La recherche full text et par auteur fonctionnait, mais pas celle par date (bien que 3 valeurs soient indexées). J'ai lu la doc https://www.w3.org/TR/xpath-full-text-10/#ftcaseoption et https://exist-db.org/exist/apps/doc/lucene) sans résultat.J'avais pensé à une question de format (la requête étant récupérée comme une string, mais les textes des attributs "when" aussi).  Finalement j'ai utilisé : //tei:date[@when=$searchdate]. Pour la recherche multi critères, j'ai voulu au départ faire une boucle for et un if, puis un and pour réunir les deux conditions, mais je n'ai pas utilisé la bonne syntaxe (trouvée plus tard : on joint les requêtes DANS le filtre)). J'ai finalment, après des errances sur internet et la lecture de nombreux sites trouvé un exemple qui m'a inspiré ( une requête avec un "ou" : |)  qui m'a permis de correctement formuler ma requête avec un "and"au bon endroit : for $hit in collection(concat($config:app-root, '/data/'))//tei:TEI[.//tei:author[ft:query(.,$asearchterm)] and .//tei:p[ft:query(.,$tsearchterm)]]. J'ai donc une recherche de termes présents dans le texte d'un auteur. On pourrait évidement combiner les recherches en utilisant un formulaire avec tous les champs et un test (partie du formulaire vide ou nom). </p>
+                     <p>J'ai amélioré l'affichage des résultats en utilisant des variables pour avoir soit un lien vers un fichier xml ou html (un seul regret le concat avec localhost et un chemin contenant exist/rest/db/apps car la variable $config:app-root ne donne pas accès à ce chemin : elle vaut : /db/apps/tei-editoriale.</p>
+                    <p>Les fichiers sont affichés à l'aide d'une transformation xslt qui prend en compte les méta données (titre, auteur, source, date de première publication, date de dernière modification (je n'ai pas mis de if au cas où ceci soit vide) , la licence, qui s'afichent dans un tableau "Informations et le texte dans  un tableau en dessous.  Comme on n'utilise qu'une partie minimale des balises de la TEI, il y a relativement peu d'opérations. </p>
+
+                    <p>Pour la mise en page, j'ai voulu jouer avec les largeurs de colonnes en lisant ici : https://getbootstrap.com/docs/4.2/layout/grid/,j'ai compris le principe de la grille de 12 "colonnes dans flexbox", mais le résultat na pas été conforme (j'obtenais des colonnes les unes en dessous des autres, au lieu d'une petite à gauche et une plus large à droite avec le texte). Je n'ai pas voulu installer un autre modèle bootstrap (que j'ai laissé dans shared resources et ce n'est pas essentiel). J'ai donc une mise en page avec des tableaux (ce n'est pas idéal mais le temps a manqué) : elle permet d'avoir des liens sur les chapitres et parties, et les résultats des recherches avec leur signification (score, kwic et fichier). j'ai essayé la méthode avec tableau indiquée ici : https://exist-db.org/exist/apps/doc/kwic, mais ça ne s'affichait pas comme je voulais. Tous les style de boostrap ne sont pas disponibles (exemple pour un bouton button type="button" class="btn btn-dark"). Même avec un ajout css dans style.css. J'ai utlisé le modèle de formulaire inline : https://getbootstrap.com/docs/3.4/css/#forms-inline, mais le div avec le bouton était légèrement décalé (pas aligné avec la zone d'input). Je pensais personnaliser la feuille de style facilement, proprement et rapidement, mais ce ne fut pas le cas. J'ai utilisé les "panel" par défaut. Les rares personnalisation de la feuille de style censé s'appliquer uniquement sur les tableaux de résultat (via une classe "resultable") s'appliquent parfois (!!) aussi ailleurs.</p>
+                     <p>L'affichage de index.xml ne transforme pas les liens (ils sont dans le texte et pas dans un noeud particulier : comme target pour des balises ref par exemple, ce qui aurait permis de les                     transformer simplement).J'ai choisi d'utiliser le même format de nos autres fichiers.J'ai vu qu'on pouvait utiliser tokenize avec une regex si on voulait le faire dans le texte, mais garder la patten trouvée est une autre affaire (possible avec une fonction contenant la regex et renvoyant le match je suppose).</p>
+              
+                </div>
+            </div>
+            
+        </body>
+    </text>
+</TEI>
