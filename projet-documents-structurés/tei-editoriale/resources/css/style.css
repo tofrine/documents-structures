@@ -1,0 +1,99 @@
+/* Application styles could go here */
+html{
+    height:100%;
+}
+body{
+    display:flex;
+    flex-direction:column;
+    background-color:#D0C8C6;
+    height:100%;
+}
+header{
+    flex:0 0 auto;
+    background-color:#333; /*#F8F8F8*/
+    color:#ffffff;
+}
+.main-content{
+    flex:1 0 auto;
+
+}
+footer{
+    flex:0 0 auto;
+    background-color:#333; /*#F8F8F8*/
+    color:#ffffff;
+    font-size:13px;
+    padding:20px;
+    /* position: absolute;*/
+    left:0;
+    right:0;
+    width:100%;
+    margin-top:10px;
+}
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a:link {
+  color: #08506B ;
+}
+
+a:visited {
+  color: #08506B;
+}
+
+a:focus {
+  background: #BAD9DE;
+}
+
+a:hover {
+  background: #ACE5EE ;
+}
+
+a:active {
+  background: #0A5663 ;
+  color: #ACE5EE ;
+}
+#gauche { 
+   position: absolute; 
+   top: 0; 
+   left: 0; 
+   width: 250; 
+}
+#droite { 
+   position: absolute; 
+   top: 0; 
+   right: 0; 
+   width: 250; 
+}
+#centre { 
+   margin-right: 50; /* largeur de la colonne droite */
+   margin-left: 50;; /* largeur de la colonne gauche */
+}
+#body { 
+   margin-right: 50; /* largeur de la colonne droite */
+   margin-left: 50;; /* largeur de la colonne gauche */
+   width: 250; 
+}
+#searchtable{
+    text-align:left;
+    background-color:white;
+   
+}
+#searchtable tbody{
+    width:100%;
+}
+
+#searchtable tr, td{
+    background-color:white;
+    border-style:groove;
+     width:45%;
+}
+.score{ 
+   width:10%;
+}
+#btn btn-dark{
+    background-color:#4d4c4e;
+    color:#ffffff
+}

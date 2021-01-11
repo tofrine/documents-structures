@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+<h1>Page de recherches dans les documents</h1>
+ <h2>Recherche dans le texte des documents</h2>
+    <div>
+        <form method="get">
+            <div>
+                <input type="text" name="inputword" placeholder="Entrez un mot"/>
+                <button type="submit" class="btn btn-dark">Chercher</button>
+            </div>
+        </form>
+    </div>
+    <div class="resultable">
+    
+        <table>
+            <thead>
+            <tr>
+            <th class="score">
+            <strong>Score</strong>
+            </th>
+            <th>
+            <strong>Keyword In Context (KWIC)</strong>
+            </th>
+            <th>
+            <strong>Fichiers</strong>
+            </th>
+            </tr>
+            </thead>
+             <tbody>
+           <tr data-template="app:search"/>
+            </tbody>
+           </table>
+        <hr/>
+    </div>
+    <h2>Recherche d'auteur</h2>
+    <div>
+        <form method="get">
+            <div>
+                <input type="text" name="inputaut" placeholder="Entrez un mot"/>
+                <button type="submit" class="btn btn-dark">Chercher</button>
+            </div>
+        </form>
+    </div>
+ <div class="searchtable">
+        <table>
+           <thead>
+            <tr>
+            <th class="score">
+            <strong>Score</strong>
+            </th>
+            <th>
+            <strong>Keyword In Context (KWIC)</strong>
+            </th>
+            <th>
+            <strong>Fichiers</strong>
+            </th>
+            </tr>
+            </thead>
+             <tbody>
+           <tr data-template="app:authorsearch"/>
+           </tbody>
+           </table>
+        <hr/>
+    </div>
+    <h2>Recherche de date</h2>
+    <div>
+        <form method="get">
+            <div>
+                <input type="text" name="inputdate" placeholder="Entrez une date"/>
+                <button type="submit" class="btn btn-dark">Chercher</button>
+            </div>
+        </form>
+    </div>
+    <div class="searchtable">
+        <table>
+            <thead>
+            <tr>
+            <th class="score">
+            <strong>Score</strong>
+            </th>
+            <th>
+            <strong>Keyword In Context (KWIC)</strong>
+            </th>
+            <th>
+            <strong>Fichiers</strong>
+            </th>
+            </tr>
+            </thead>
+             <tbody>
+             <tr data-template="app:datesearch"/>
+            </tbody>
+        </table>
+        <hr/>
+    </div>
+    <h2>Recherche d'un mot dans les textes d'un auteur</h2>
+    <div>
+    <h4>Entrez le nom de l'auteur, puis le texte à chercher</h4>
+    <form method="get">
+    <div class="row">
+        <div class="col">
+        Nom de l'auteur
+        <input type="text" name="dbinputaut" placeholder="Entrez un nom"/>
+         </div>
+        <div class="col">
+         texte cherché
+        <input type="text" name="dbinputword" placeholder="Entrez un mot"/>
+        </div>
+        <button type="submit" class="btn btn-dark">Chercher</button>
+    </div>
+    </form>
+    </div>
+    <div class="searchtable">
+        <table>
+            <thead>
+            <tr>
+            <th class="score">
+            <strong>Score</strong>
+            </th>
+            <th>
+            <strong>Keyword In Context (KWIC)</strong>
+            </th>
+            <th>
+            <strong>Fichiers</strong>
+            </th>
+            </tr>
+            </thead>
+             <tbody>
+           <tr data-template="app:doublesearch"/>
+            </tbody>
+        </table>
+        <hr/>
+    </div>
+
+</div>
