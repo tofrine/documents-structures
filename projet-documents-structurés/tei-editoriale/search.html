@@ -10,23 +10,26 @@
             </div>
         </form>
     </div>
-    <div>
+    <div class="resultable">
+    
         <table>
-            <tbody>
+            <thead>
             <tr>
-            <td class="score">
-                        <strong>Score</strong>
-                    </td>
-            <td>
-                        <strong>Keyword In Context (KWIC)</strong>
-                    </td>
-            <td>
-                        <strong>Fichiers</strong>
-                    </td>
+            <th class="score">
+            <strong>Score</strong>
+            </th>
+            <th>
+            <strong>Keyword In Context (KWIC)</strong>
+            </th>
+            <th>
+            <strong>Fichiers</strong>
+            </th>
             </tr>
+            </thead>
+             <tbody>
+           <tr data-template="app:search"/>
             </tbody>
            </table>
-           <tr data-template="app:search"/>
         <hr/>
     </div>
     <h2>Recherche d'auteur</h2>
@@ -38,23 +41,25 @@
             </div>
         </form>
     </div>
- <div>
+ <div class="searchtable">
         <table>
-            <tbody>
+           <thead>
             <tr>
-            <td class="score">
-                        <strong>Score</strong>
-                    </td>
-            <td>
-                        <strong>Keyword In Context (KWIC)</strong>
-                    </td>
-            <td>
-                        <strong>Fichier</strong>
-                    </td>
+            <th class="score">
+            <strong>Score</strong>
+            </th>
+            <th>
+            <strong>Keyword In Context (KWIC)</strong>
+            </th>
+            <th>
+            <strong>Fichiers</strong>
+            </th>
             </tr>
-            </tbody>
-           </table>
+            </thead>
+             <tbody>
            <tr data-template="app:authorsearch"/>
+           </tbody>
+           </table>
         <hr/>
     </div>
     <h2>Recherche de date</h2>
@@ -66,56 +71,63 @@
             </div>
         </form>
     </div>
-    <div class="resultable">
+    <div class="searchtable">
         <table>
-            <tbody>
+            <thead>
             <tr>
-            <td>
-                    </td>
-            <td>
-                        <strong>Nom du fichier</strong>
-                    </td>
-            <td>
-                        <strong>Voir le fichier</strong>
-                    </td>
+            <th class="score">
+            <strong>Score</strong>
+            </th>
+            <th>
+            <strong>Keyword In Context (KWIC)</strong>
+            </th>
+            <th>
+            <strong>Fichiers</strong>
+            </th>
             </tr>
+            </thead>
+             <tbody>
+             <tr data-template="app:datesearch"/>
             </tbody>
-           </table>
-           <tr data-template="app:datesearch"/>
+        </table>
         <hr/>
     </div>
     <h2>Recherche d'un mot dans les textes d'un auteur</h2>
     <div>
     <h4>Entrez le nom de l'auteur, puis le texte à chercher</h4>
-        <form method="get">
-            <div>
-                <li>Nom de l'auteur
-                    <input type="text" name="dbinputaut" placeholder="Entrez un nom"/>
-                </li>
-                <li>Texte cherché
-                    <input type="text" name="dbinputword" placeholder="Entrez un mot"/>
-                </li>
-                <button type="submit" class="btn btn-dark">Chercher</button>
-            </div>
-        </form>
+    <form method="get">
+    <div class="row">
+        <div class="col">
+        Nom de l'auteur
+        <input type="text" name="dbinputaut" placeholder="Entrez un nom"/>
+         </div>
+        <div class="col">
+         texte cherché
+        <input type="text" name="dbinputword" placeholder="Entrez un mot"/>
+        </div>
+        <button type="submit" class="btn btn-dark">Chercher</button>
     </div>
-    <div class="resultable">
+    </form>
+    </div>
+    <div class="searchtable">
         <table>
-            <tbody>
+            <thead>
             <tr>
-            <td class="score">
-                        <strong>Score</strong>
-                    </td>
-            <td>
-                        <strong>Keyword In Context (KWIC)</strong>
-                    </td>
-            <td>
-                        <strong>Fichiers</strong>
-                    </td>
+            <th class="score">
+            <strong>Score</strong>
+            </th>
+            <th>
+            <strong>Keyword In Context (KWIC)</strong>
+            </th>
+            <th>
+            <strong>Fichiers</strong>
+            </th>
             </tr>
-            </tbody>
-           </table>
+            </thead>
+             <tbody>
            <tr data-template="app:doublesearch"/>
+            </tbody>
+        </table>
         <hr/>
     </div>
 

@@ -22,7 +22,7 @@
                         <tbody>
                             <tr>
                                 <th>
-                                    <p>Titre :</p>
+                                    Titre :
                                 </th>
                                 <td>
                                     <xsl:for-each select="//tei:fileDesc/tei:titleStmt/tei:title">
@@ -44,7 +44,7 @@
                             </tr>
                                 <tr>
                                     <th>
-                                        <p>Première édition</p>
+                                        Première édition
                                     </th>
                                     <td>
                                         <xsl:apply-templates select="//tei:editionStmt/tei:edition/tei:date/@when"/>
@@ -54,7 +54,7 @@
                             
                                    <tr>
                                     <th>
-                                        <p>Dernière modification :</p>
+                                        Dernière modification :
                                     </th>
                                     <td>
                                         <xsl:apply-templates select="//tei:revisionDesc/tei:listChange/tei:change/tei:date"/>
@@ -62,19 +62,20 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        <p>Source :</p>
+                                        Source :
                                     </th>
                                     <td>
                                         <xsl:element name="a">
                                             <xsl:attribute name="href">
+                                            <xsl:apply-templates select="//tei:sourceDesc/tei:p[2]"/>
                                             </xsl:attribute>
-                                        <xsl:apply-templates select="//tei:sourceDesc/tei:p[2]"/>
+                                     <xsl:apply-templates select="//tei:sourceDesc/tei:p[2]"/>
                                          </xsl:element>
                                     </td>
                                 </tr>
                             <tr>
                                 <th>
-                                    <p>License :</p>
+                                    License :
                                 </th>
                                 <td>
                                     <xsl:element name="a">

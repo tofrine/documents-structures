@@ -76,13 +76,16 @@ a:active {
    margin-left: 50;; /* largeur de la colonne gauche */
    width: 250; 
 }
-#resultable{
+#searchtable{
     text-align:left;
     background-color:white;
    
 }
+#searchtable tbody{
+    width:100%;
+}
 
-#resultable tr, td{
+#searchtable tr, td{
     background-color:white;
     border-style:groove;
      width:45%;

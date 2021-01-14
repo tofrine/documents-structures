@@ -84,17 +84,13 @@ let $href := concat('show.html','?document=', $docname)
 let $score as xs:float := ft:score($hit)
 order by $score descending
 return
-<div class="resultable">
-    <table>
-    <tbody>
+
     <tr>
     <td class="score">{$score}</td>
     <td>{kwic:summarize($hit, <config width="40" link="{concat("http://localhost:8080/exist/rest/db/apps/tei-editoriale/data/",$docname)}" />)}</td>
     <td><a href="{$href}">{$docname}</a></td>
     </tr>
-    </tbody>
-    </table>
-</div>
+
 else
 <div>Champ vide !</div>
 };
@@ -109,20 +105,15 @@ let $href := concat('show.html','?document=', $docname)
 let $score as xs:float := ft:score($hit)
 order by $score descending
 return
-<div class="resultable">
-    <table>
-    <tbody>
     <tr>
     <td class="score">{$score}</td>
     <td>{kwic:summarize($hit, <config width="40" link="{concat("http://localhost:8080/exist/rest/db/apps/tei-editoriale/data/",$docname)}" />)}</td>
     <td><a href="{$href}">{$docname}</a></td>
-    </tr>
-    </tbody>
-    </table>
-</div>
+     </tr>
 else
 <div>Champ vide !</div>
 };
+
 declare function app:datesearch($node as node(), $model as map (*)) {
 if (request:get-parameter("inputdate", "") !="") then
 let $searchdate as xs:string:= request:get-parameter("inputdate", "")
@@ -131,17 +122,11 @@ let $document := document-uri(root($hit))
 let $docname := functx:substring-after-last(document-uri(root($hit)), '/')
 let $href := concat('show.html','?document=', $docname)
 return
-<div class="resultable">
-    <table>
-    <tbody>
     <tr>
     <td class="score"></td>
     <td>{$docname}</td>
     <td><a href="{$href}">{$docname}</a></td>
     </tr>
-    </tbody>
-    </table>
-</div>
 else
 <div>Champ vide !</div>
 };
@@ -157,17 +142,11 @@ let $href := concat('show.html','?document=', $docname)
 let $score as xs:float := ft:score($hit)
 order by $score descending
 return
-<div class="resultable">
-    <table>
-    <tbody>
     <tr>
     <td class="score">{$score}</td>
     <td>{kwic:summarize($hit, <config width="40" link="{concat("http://localhost:8080/exist/rest/db/apps/tei-editoriale/data/",$docname)}" />)}</td>
     <td><a href="{$href}">{$docname}</a></td>
     </tr>
-    </tbody>
-    </table>
-</div>
 else
 <div>Champ vide !</div>
 };
